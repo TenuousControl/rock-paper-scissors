@@ -21,20 +21,34 @@ function getComputerChoice(choice){
 function playRound(playerSelection, computerSelection){
     //return a string to determine winner
     if (playerSelection === computerSelection){
-        return result = "Draw!";
+
+        result = `You chose ${playerSelection}, the computer chose ${computerSelection} Draw!`;
+
     }
     else if ((playerSelection === "rock" && computerSelection === "scissors")
     || (playerSelection === "scissors" && computerSelection === "paper")
     || (playerSelection === "paper" && computerSelection === "rock")){
-        return result = "You win!";
+
+        result = `You chose ${playerSelection}, the computer chose ${computerSelection} You win!`;
+
     }
     else if ((playerSelection === "scissors" && computerSelection === "rock")
     || (playerSelection === "paper" && computerSelection === "scissors")
     || (playerSelection === "rock" && computerSelection === "paper")){
-        return result = "You lose!";
+
+        result = `You chose ${playerSelection}, the computer chose ${computerSelection} You lose!`;
+
+    }
+    console.log(result)
+    return result
+}
+
+function game(){
+    let playerSelection;
+    for(let i = 0; i < 5; i++){
+        playerSelection = prompt("Enter your choice:").toLowerCase();
+        playRound(playerSelection, getComputerChoice());
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+game()
